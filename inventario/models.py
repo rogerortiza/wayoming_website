@@ -63,7 +63,7 @@ class Productos(RegistroFecha):
         if not self.no_control:
             try:
                 last = Productos.objects.latest('id')
-            except "DoesNotExist":
+            except Productos.DoesNotExist:
                 self.no_control = "WAY001"
             else:
                 last_no_control = int(last.no_control[5:]) + 1
