@@ -103,6 +103,7 @@ venv.bak/
 # mypy
 .mypy_cache/
 
+# Stati stuff no needed in Production
 .static/admin/
 .static/img/
 .static/rest_framework/
