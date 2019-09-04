@@ -128,8 +128,11 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
-    '/static/',
+    '/home/wayoming/apps/wayoming_website/static/',
 ]
+
+STATIC_ROOT = '/home/wayoming/apps/wayoming_website/static'
+
 
 # Haystack configurations
 HAYSTACK_CONNECTIONS = {
