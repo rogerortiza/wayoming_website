@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    <h1>Lista de Productos</h1>
+{% endblock %}
+
+{% block content %}
+    <div id="starting">
+        <div class="ui container">
+              <div class="ui four cards">
+                <div class="card" v-for="producto in productos">
+                    <div class="blurring dimmable image">
+                        <div class="ui dimmer">
+                            <div class="content">
+                                <div class="center">
+                                    <div class="ui inverted button" @mouseover="dimmer()">Ver mas</div>
+                                </div>
+                            </div>
+                        </div>
+                        <img :src="'/'+ producto.foto">
+                    </div>
+                     <div class="content">
+                         <div class="text-center">
+                             <a v-for="color in producto.colores" :class="'ui '+color+' empty circular label'"></a>
+                         </div>
+                        <a class="header" :href="'../detalle-producto/'+producto.id">${producto.nombre}</a>
+                        <div class="meta">
+                            <span class="date">${producto.descripcion}</span>
+                        </div>
+                     </div>
+                    <div class="extra content">
+                        <a class="ui orange tag label">${producto.precio}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block vue-code %}
+<script type="text/javascript">
+        new Vue({
+            el: '#starting',
+            delimiters: ['${','}'],
+            data: {
+                productos: [],
+                loading: false,
+                currentProducto: {},
+                message: null,
+            },
+            mounted: function() {
+                this.getProductos();
+            },
+            methods: {
+                dimmer: function() {
+                  console.log("dimmer jajajaj")
+                },
+                getProductos: function() {
+                    this.loading = true;
+                    this.$http.get('/api/productos/')
+                .then((response) => {
+                    this.productos = response.data;
+                    this.loading = false;
+                })
+                .catch((err) => {
+                   this.loading = false;
+                   console.log(err);
+                })
+             },
+          }
+        });
+    </script>
+{% endblock %}

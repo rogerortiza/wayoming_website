@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Wayoming Boot Shop</title>
+</head>
+<body>
+  <div id="app">
+    ${ messageToLower } - Roger
+    ${ cost }
+    ${ details }
+  </div>
+  <script src="https://unpkg.com/vue"></script>
+  <script type="text/javascript">
+      // JS Code here
+      const app = new Vue({
+        el: '#app',
+        delimiters: ['${','}'],
+        data: {
+          message: 'Hello!',
+          price: 18 + 6,
+          details: ['one', 'two', 'three'],
+          currency: '$',
+          salesTax: 16
+        },
+        computed: {
+          messageToLower() {
+            return this.message.toLowerCase();
+          },
+          cost() {
+            // Work out the price of the item including salesTax
+            let itemCost = parseFloat(Math.round((this.salesTax / 100) * this.price) + this.price).toFixed(2);
+            // Add text before displaying the currency and amount
+            let output = 'This item costs ' + this.currency + itemCost;
+            // Append to the output variable the price without salesTax
+            output += ' (' + this.currency + this.price + ' excluding salesTax)';
+            // Return the output value
+            return output;
+          }
+        }
+      });
+  </script>
+</body>
+</html>

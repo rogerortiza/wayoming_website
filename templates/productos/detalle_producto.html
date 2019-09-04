@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}
+    <h3>Detalle del Producto</h3>
+{% endblock %}
+{% block content %}
+    {{ producto.nombre }} - {{ producto.precio }}
+    <ul>
+        {% for detalle in  producto.detalleproducto_set.all  %}
+        <li>{{ detalle.id }} - {{  detalle.color }} - {{ detalle.size }} - {{ detalle.cantidad }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
