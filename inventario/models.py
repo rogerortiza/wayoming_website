@@ -61,8 +61,12 @@ class Productos(RegistroFecha):
 
     def save(self, *args, **kwargs): # pylint: disable=W0221
         if not self.no_control:
-            last = Productos.objects.latest('id') if not None else 1
-            last_no_control = int(last.no_control[5:]) + 1
-            self.no_control = "WAY00" + str(last_no_control)
+            try:
+                last = Productos.objects.latest('id')
+            except "DoesNotExist":
+                self.no_control = "WAY001"
+            else:
+                last_no_control = int(last.no_control[5:]) + 1
+                self.no_control = "WAY00" + str(last_no_control)
 
         super(Productos, self).save(*args, **kwargs)
