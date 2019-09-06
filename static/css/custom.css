@@ -1,0 +1,10 @@
+.title-marca {
+    position: absolute;
+    font-size: x-large;
+    text-align: center;
+    width: 50%;
+    left: 25%;
+    height: 41px;
+    line-height: 41px;
+    color: #FFF8DC;
+}

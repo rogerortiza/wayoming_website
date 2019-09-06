@@ -32,7 +32,7 @@ urlpatterns = [
     path('', home, name="home"),
     path('dashboard/', TemplateView.as_view(template_name='dashboard/index.html')),
     path('lista-clientes/', ClientesList.as_view()),
-    path('lista-productos/', TemplateView.as_view(template_name='inventario/lista_productos.html'), name='lista-productos'),
+    path('productos/', TemplateView.as_view(template_name='inventario/lista_productos.html'), name='lista-productos'),
     path('detalle-producto/<pk>', ProductoDetalle.as_view(), name='detalle-producto'),
     path('wbs-admin/', admin.site.urls),
     path('search/', include('haystack.urls')),

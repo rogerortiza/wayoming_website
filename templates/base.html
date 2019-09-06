@@ -4,13 +4,48 @@
  <head>
      <title>Wayoming Boot Shop</title>
      <meta charset="utf-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
      <meta name="viewport" content="width=device-width initial-scale=1.0">
      <meta name="description" content="A simple crud app made with the vue js and django">
-     <meta name="keywords" content="vuejs, django, crudapp, restapi">
+     <meta name="keywords" content="botas, wayoming, santiago, rancho, piel">
      <link rel="stylesheet" type="text/css" href="{% static "css/semantic.min.css" %}">
+     <link rel="stylesheet" type="text/css" href="{% static "css/custom.css" %}">
+     {% block css %}{% endblock %}
+     {% block javascript %}{% endblock %}
 </head>
 <body>
-
+    {% block menu %}
+        <div class="ui brown tiny inverted menu">
+        <a class="item" href="/">
+            Home
+        </a>
+        <a class="active item">
+            Productos
+        </a>
+        <a class="item">
+            Contacto
+        </a>
+        <a class="item">
+            Acerca de
+        </a>
+        <div class="title-marca">
+            Wayoming Boot Shop
+        </div>
+        <div class="right menu">
+            <div class="ui dropdown item">
+                Language <i class="dropdown icon"></i>
+                <div class="menu">
+                    <a class="item">English</a>
+                    <a class="item">Russian</a>
+                    <a class="item">Spanish</a>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ui orange button">Login In</div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
     {% block title %}{% endblock %}
     {% block header %}{% endblock %}
     {% block content %}{% endblock %}
@@ -24,6 +59,14 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.3.5"></script>
     {% block vue-code %}{% endblock %}
+    <script>
+         $(document)
+    .ready(function() {
+        $('.ui.dropdown').dropdown();
+        $('.tabular.menu .item').tab();
+    })
+  ;
+    </script>
 
 </body>
 </html>

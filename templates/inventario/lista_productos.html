@@ -1,7 +1,15 @@
 {% extends "base.html" %}
 {% load static %}
+
 {% block title %}
-    <h1>Lista de Productos</h1>
+    <div class="ui container">
+        <div class="ui tabular menu">
+            <a class="item active">Todos</a>
+            <a class="item">Botas</a>
+            <a class="item">Chamarras</a>
+            <a class="item">Accesorios</a>
+        </div>
+    </div>
 {% endblock %}
 
 {% block content %}
