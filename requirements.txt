@@ -4,7 +4,7 @@ astroid==1.6.5
 attrs==19.1.0
 backcall==0.1.0
 black==18.9b0
-certifi==2018.4.16
+certifi==2022.12.7
 Click==7.0
 decorator==4.3.0
 dictfier==1.5.0
